@@ -1,19 +1,32 @@
-const arr = [4, 3, 6, 8, 3, 6, 20];
-const arr2 = [4, 7, 3]
+const arr = [7, 2, 1, 5];
+const arr2 = [4, 10, 3, 1, 5];
+const arr3 = [2, 4, 4, 3, 3];
+const arr4 = [3, 6, 4];
 
 const fn1 = ( array ) => {
-    let prevDate = 0;
-
-    array.map( date => {
-        if( prevDate + date > 31 ) {
-            console.log( `Choose next month` );
-            return
+    let sum1 = 0;
+    for( let i = 0; i < array.length; i++ ) {
+        sum1 += array[i++];
+    }
+    let sum2 = 0;
+    for( let i = 1; i < array.length; i++ ) {
+        sum2 += array[i++]
+    }
+    let sum3 = 0;
+    for( let i = 0; i < array.length; i++ ) {
+        if( array[i] > array[i + 1] ) {
+            if( array[i] + array[i + 1] > array[i + 2] ) {
+                sum3 += array[i];
+            } else {
+                sum3 += array[i + 2];
+            }
         }
-        console.log( `Aug ${prevDate + 1} to Aug ${prevDate + date}` );
-        prevDate += date
-        return prevDate;
-    } )
+    }
+    const newArr = [sum1, sum2, sum3].sort( ( a, b ) => b - a )
+    console.log( newArr[0] );
 }
 
 fn1( arr );
 fn1( arr2 );
+fn1( arr3 );
+fn1( arr4 );
