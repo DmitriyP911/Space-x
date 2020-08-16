@@ -6,20 +6,19 @@ const arr5 = [1, 1, 1, 2, 3, 4, 6, 7]; //14
 const arr6 = [7, 7, 7, 7, 7, 6, 1, 1, 1, 2, 2, 3, 4, 4, 8, 8, 10] //47
 const arr7 = [1, 1, 1, 1, 1, 2, 2, 2, 2, 2] //8
 const arr8 = [29, 17, 11, 22, 12, 22, 20, 4] // 77
+const arr9 = [5, 4, 4, 4, 4, 4, 3, 5, 4, 4] // 22
 
 const fn1 = ( array ) => {
     const resOneFn = ( arr ) => {
         let res = 0;
         for( let i = 0; i < arr.length; i += 1 ) {
             const fn = ( one, two, three, four, five ) => {
-                const sum1 = one + three + five;
-                const sum2 = one + four;
-                const sum3 = two + four;
-                const sum4 = two + five;
-                if( sum1 >= sum2 && sum1 >= sum3 && sum1 >= sum4 || sum2 >= sum1 && sum2 >= sum3 && sum2 >= sum4 ) {
+                const max = Math.max( one + three + five, one + four );
+                const max1 = Math.max( two + four, two + five );
+                if( max > max1 ) {
                     res += one;
                     return i += 1;
-                } else if( sum3 >= sum1 && sum3 >= sum2 && sum3 >= sum4 || sum4 >= sum1 && sum4 >= sum3 && sum4 >= sum2 ) {
+                } else {
                     res += two;
                     return i += 2;
                 }
@@ -28,9 +27,9 @@ const fn1 = ( array ) => {
         }
         return res;
     }
-    const res2 = resOneFn( array )
+    const res2 = resOneFn( array );
     const res1 = resOneFn( array.reverse() );
-    const resArr = [res2, res1].sort( ( a, b ) => b - a )
+    const resArr = [res2, res1].sort( ( a, b ) => b - a );
     console.log( "max value", resArr[0] )
 }
 
@@ -42,3 +41,4 @@ fn1( arr5 );
 fn1( arr6 );
 fn1( arr7 );
 fn1( arr8 );
+fn1( arr9 );
