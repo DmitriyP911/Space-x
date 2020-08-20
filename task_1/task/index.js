@@ -27,9 +27,29 @@ const fn1 = ( array ) => {
         }
         return res;
     }
+    const resThreeFn = ( arr ) => {
+        let res = 0;
+        for( let i = 0; i < arr.length; i += 1 ) {
+            const fn = ( one, two, three, four, five ) => {
+                const max = Math.max( one + three + five, one + four );
+                const max1 = Math.max( two + four, two + five );
+                if( max > max1 ) {
+                    res += one;
+                    return i += 1;
+                } else {
+                    res += two;
+                    return i += 2;
+                }
+            }
+            fn( arr[i], arr[i + 1] === undefined ? 0 : arr[i + 1], arr[i + 2] === undefined ? 0 : arr[i + 2], arr[i + 3] === undefined ? 0 : arr[i + 3], arr[i + 4] === undefined ? 0 : arr[i + 4] )
+        }
+        return res;
+    }
     const res2 = resOneFn( array );
     const res1 = resOneFn( array.reverse() );
-    const resArr = [res2, res1].sort( ( a, b ) => b - a );
+    const res4 = resThreeFn( array );
+    const res3 = resThreeFn( array.reverse() );
+    const resArr = [res2, res1, res3, res4].sort( ( a, b ) => b - a );
     console.log( "max value", resArr[0] )
 }
 
