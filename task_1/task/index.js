@@ -1,4 +1,4 @@
-const arr = [7, 2, 1, 5]; // 12
+const arr = [2, 6, 7, 7, 7, 19, 14]; // 32
 const arr2 = [4, 10, 3, 1, 5]; // 15
 const arr3 = [4, 4, 4, 4, 4, 4]; // 12
 const arr4 = [3, 1, 1, 2, 5, 7, 3, 3, 6, 1, 1, 2, 11, 11, 22, 11, 11, 11]; //63
@@ -27,9 +27,19 @@ const fn1 = ( array ) => {
         }
         return res;
     }
+    let res3 = 0;
+    for(let i=1; i<array.length; i+=1) {
+        res3+=array[i];
+        i+=1;
+    }
+    let res4=0;
+    for(let i=0; i<array.length; i+=1) {
+        res4+=array[i];
+        i+=1;
+    }
     const res2 = resOneFn( array );
     const res1 = resOneFn( array.reverse() );
-    const resArr = [res2, res1].sort( ( a, b ) => b - a );
+    const resArr = [res2, res1, res3, res4].sort( ( a, b ) => b - a );
     console.log( "max value", resArr[0] )
 }
 
